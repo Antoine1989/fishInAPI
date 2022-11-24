@@ -5,7 +5,7 @@ CREATE TABLE "Poisson" (
   "quantite" int DEFAULT 1,
   "poids" numeric,
   "longueur" numeric,
-  "datePeche" datetime,
+  "date_peche" date,
   "maree" varchar,
   "coef" int,
   "commentaires" varchar,
@@ -21,7 +21,7 @@ CREATE TABLE "Crustace" (
   "quantite" int DEFAULT 1,
   "poids" numeric,
   "longueur" numeric,
-  "datePeche" datetime,
+  "date_peche" date,
   "maree" varchar,
   "coef" int,
   "commentaires" varchar,
@@ -37,7 +37,7 @@ CREATE TABLE "Cephalopode" (
   "quantite" int DEFAULT 1,
   "poids" numeric,
   "longueur" numeric,
-  "datePeche" datetime,
+  "date_peche" date,
   "maree" varchar,
   "coef" int,
   "commentaires" varchar,
@@ -50,7 +50,7 @@ CREATE TABLE "User" (
   "user_id" SERIAL PRIMARY KEY,
   "nom" varchar NOT NULL,
   "adresse" varchar NOT NULL,
-  "password" int DEFAULT 1
+  "password" int 
 );
 
 CREATE TABLE "Spot" (
