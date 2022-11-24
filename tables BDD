@@ -1,0 +1,73 @@
+CREATE TABLE "Poisson" (
+  "poisson_id" SERIAL PRIMARY KEY,
+  "nom" varchar NOT NULL,
+  "technique" varchar NOT NULL,
+  "quantite" int DEFAULT 1,
+  "poids" numeric,
+  "longueur" numeric,
+  "datePeche" datetime,
+  "maree" varchar,
+  "coef" int,
+  "commentaires" varchar,
+  "photo" varchar,
+  "spot_id" int,
+  "user_id" int
+);
+
+CREATE TABLE "Crustace" (
+  "crustace_id" SERIAL PRIMARY KEY,
+  "nom" varchar NOT NULL,
+  "technique" varchar NOT NULL,
+  "quantite" int DEFAULT 1,
+  "poids" numeric,
+  "longueur" numeric,
+  "datePeche" datetime,
+  "maree" varchar,
+  "coef" int,
+  "commentaires" varchar,
+  "photo" varchar,
+  "spot_id" int,
+  "user_id" int
+);
+
+CREATE TABLE "Cephalopode" (
+  "cephalopode_id" SERIAL PRIMARY KEY,
+  "nom" varchar NOT NULL,
+  "technique" varchar NOT NULL,
+  "quantite" int DEFAULT 1,
+  "poids" numeric,
+  "longueur" numeric,
+  "datePeche" datetime,
+  "maree" varchar,
+  "coef" int,
+  "commentaires" varchar,
+  "photo" varchar,
+  "spot_id" int,
+  "user_id" int
+);
+
+CREATE TABLE "User" (
+  "user_id" SERIAL PRIMARY KEY,
+  "nom" varchar NOT NULL,
+  "adresse" varchar NOT NULL,
+  "password" int DEFAULT 1
+);
+
+CREATE TABLE "Spot" (
+  "spot_id" SERIAL PRIMARY KEY,
+  "nom" varchar NOT NULL,
+  "ville" varchar,
+  "user_id" int
+);
+
+ALTER TABLE "Spot" ADD FOREIGN KEY ("user_id") REFERENCES "User" ("user_id");
+ALTER TABLE "Poisson" ADD FOREIGN KEY ("spot_id") REFERENCES "Spot" ("spot_id");
+ALTER TABLE "Poisson" ADD FOREIGN KEY ("user_id") REFERENCES "User" ("user_id");
+ALTER TABLE "Crustace" ADD FOREIGN KEY ("spot_id") REFERENCES "Spot" ("spot_id");
+ALTER TABLE "Crustace" ADD FOREIGN KEY ("user_id") REFERENCES "User" ("user_id");
+ALTER TABLE "Cephalopode" ADD FOREIGN KEY ("spot_id") REFERENCES "Spot" ("spot_id");
+ALTER TABLE "Cephalopode" ADD FOREIGN KEY ("user_id") REFERENCES "User" ("user_id");
+
+
+
+
