@@ -2,6 +2,7 @@ const express =require('express');
 const poissonRoutes=require('./src/poisson/routes');
 const crustaceRoutes=require('./src/crustace/routesCrustace');
 const cephalopodeRoutes=require('./src/cephalopode/routesCephalopode');
+const spotRoutes=require('./src/spot/routesSpot');
 const res = require('express/lib/response');
 const app =express();
 const port=3001;
@@ -14,5 +15,6 @@ app.get ("/",(req,res) =>{
 app.use('/api/v1/poissons', poissonRoutes);
 app.use('/api/v1/crustaces', crustaceRoutes);
 app.use('/api/v1/cephalopodes', cephalopodeRoutes);
+app.use('/api/v1/spots', spotRoutes);
 
 app.listen(port,()=>console.log(`app listening on port ${port}`));

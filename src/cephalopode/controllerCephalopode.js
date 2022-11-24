@@ -23,7 +23,7 @@ const addCephalopode=(req,res)=>{
     pool.query(queries.addCephalopode,[nom,technique,quantite,poids,longueur,
         date,maree,coef,commentaire,photo,spot_id,user_id],(error,results)=>{
         if (error) throw error;
-    res.status(200).send("Un nouveau crustacé a été ajouté avec succès");
+    res.status(200).send("Un nouveau céphalopode a été ajouté avec succès");
     })
 }
 
@@ -33,11 +33,11 @@ const removeCephalopode=(req,res)=>{
       pool.query(queries.getCephalopodeById,[id],(error,results)=>{
       const noPoissonFound= !results.rows.length;
         if(noPoissonFound){
-        res.send("Le poisson n'existe pas en bdd");
+        res.send("Le céphalopode n'existe pas en bdd");
     }
     pool.query(queries.removeCephalopode,[id],(error,results)=>{
         if (error) throw error;
-        res.status(200).send("Crustace supprimé avec succès");
+        res.status(200).send("Céphalopode supprimé avec succès");
     
     })
  });

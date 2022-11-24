@@ -33,11 +33,11 @@ const removeCrustace=(req,res)=>{
       pool.query(queries.getCrustaceById,[id],(error,results)=>{
       const noPoissonFound= !results.rows.length;
         if(noPoissonFound){
-        res.send("Le poisson n'existe pas en bdd");
+        res.send("Le crustacé n'existe pas en bdd");
     }
     pool.query(queries.removeCrustace,[id],(error,results)=>{
         if (error) throw error;
-        res.status(200).send("Crustace supprimé avec succès");
+        res.status(200).send("Crustacé supprimé avec succès");
     
     })
  });
