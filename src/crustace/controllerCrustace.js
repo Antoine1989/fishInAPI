@@ -1,5 +1,5 @@
 const pool = require('../../db');
-const queries=require('./queries');
+const queries=require('./queriesCrustace');
 
 const getCrustaces =(req,res)=>{
     pool.query(queries.getCrustaces, (error,results)=>{
