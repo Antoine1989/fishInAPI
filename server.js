@@ -11,12 +11,14 @@ const port=3001;
 app.use(express.json());
 
 app.get ("/",(req,res) =>{
-    res.send("Hello WOrld!")
+    res.send("Hello World!")
 });
-app.use('/api/v1/poissons', poissonRoutes);
+
+app.use('/api/v1/pecheurs', pecheurRoutes);
+app.use('/api/v1/pecheurs/:id/spots', spotRoutes);
+app.use('/api/v1/pecheurs/:id/spots/:id/poissons', poissonRoutes);
 app.use('/api/v1/crustaces', crustaceRoutes);
 app.use('/api/v1/cephalopodes', cephalopodeRoutes);
-app.use('/api/v1/spots', spotRoutes);
-app.use('/api/v1/pecheurs', pecheurRoutes);
+
 
 app.listen(port,()=>console.log(`app listening on port ${port}`));

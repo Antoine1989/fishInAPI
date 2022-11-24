@@ -31,7 +31,7 @@ const removePecheur=(req,res)=>{
       pool.query(queries.getPecheurById,[id],(error,results)=>{
       const noSpotFound= !results.rows.length;
         if(noSpotFound){
-        res.send("Le spot n'existe pas en bdd");
+        res.send("Le pêcheur n'existe pas en bdd");
     }
     pool.query(queries.removePecheur,[id],(error,results)=>{
         if (error) throw error;
