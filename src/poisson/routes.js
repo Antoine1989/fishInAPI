@@ -13,5 +13,5 @@ router.get("/", controller.getPoissons);
 router.post("/", controller.addPoisson);
 router.get("/:id",controller.getPoissonById);
 router.delete("/:id",controller.removePoisson);
-
+router.put("/:id",controller.updatePoisson);
 module.exports=router;

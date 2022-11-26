@@ -1,3 +1,4 @@
+const req = require('express/lib/request');
 const pool = require('../../db');
 const queries=require('./queries');
 
@@ -43,9 +44,27 @@ const removePoisson=(req,res)=>{
  });
 };
 
+const updatePoisson=(req,res)=>{
+    const id = parseInt(req.params.id);
+    const {nom}=req.body;
+
+    pool.query(queries.getPoissonById,[id],(error,results)=>{
+        const noPoissonFound= !results.rows.length;
+        if(noPoissonFound){
+        res.send("Le poisson n'existe pas en bdd");
+        }
+        pool.query(queries.updatePoisson,[nom,id],(error,results)=>{
+            if (error) throw error;
+            res.status(200).send("Poisson mis à jour avec succès");
+        }
+        )
+    })
+}
+
 module.exports={
     getPoissons,
     getPoissonById,
     addPoisson,
-    removePoisson
+    removePoisson,
+    updatePoisson
 };
