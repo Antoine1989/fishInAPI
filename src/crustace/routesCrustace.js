@@ -13,5 +13,6 @@ router.get("/", controller.getCrustaces);
 router.post("/", controller.addCrustace);
 router.get("/:id",controller.getCrustaceById);
 router.delete("/:id",controller.removeCrustace);
+router.put("/:id",controller.updateCrustace);
 
 module.exports=router;

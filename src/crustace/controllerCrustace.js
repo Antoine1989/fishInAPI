@@ -42,10 +42,28 @@ const removeCrustace=(req,res)=>{
     })
  });
 };
+const updateCrustace=(req,res)=>{
+    const id = parseInt(req.params.id);
+    const {nom}=req.body;
+
+    pool.query(queries.getCrustaceById,[id],(error,results)=>{
+        const noCrustaceFound= !results.rows.length;
+        if(noCrustaceFound){
+        res.send("Le crustace n'existe pas en bdd");
+        }
+        pool.query(queries.updateCrustace,[nom,id],(error,results)=>{
+            if (error) throw error;
+            res.status(200).send("Crustace mis à jour avec succès");
+        }
+        )
+    })
+}
+
 
 module.exports={
     getCrustaces,
     getCrustaceById,
     addCrustace,
-    removeCrustace
+    removeCrustace,
+    updateCrustace
 };
