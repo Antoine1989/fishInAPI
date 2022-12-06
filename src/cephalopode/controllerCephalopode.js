@@ -43,9 +43,28 @@ const removeCephalopode=(req,res)=>{
  });
 };
 
+const updateCephalopode=(req,res)=>{
+    const id = parseInt(req.params.id);
+    const {nom}=req.body;
+
+    pool.query(queries.getCephalopodeById,[id],(error,results)=>{
+        const noCephalopodeFound= !results.rows.length;
+        if(noCephalopodeFound){
+        res.send("Le céphalopode n'existe pas en bdd");
+        }
+        pool.query(queries.updateCephalopode,[nom,id],(error,results)=>{
+            if (error) throw error;
+            res.status(200).send("Céphalopode mis à jour avec succès");
+        }
+        )
+    })
+}
+
+
 module.exports={
     getCephalopodes,
     getCephalopodeById,
     addCephalopode,
-    removeCephalopode
+    removeCephalopode,
+    updateCephalopode
 };

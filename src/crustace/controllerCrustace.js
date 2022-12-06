@@ -42,6 +42,7 @@ const removeCrustace=(req,res)=>{
     })
  });
 };
+
 const updateCrustace=(req,res)=>{
     const id = parseInt(req.params.id);
     const {nom}=req.body;

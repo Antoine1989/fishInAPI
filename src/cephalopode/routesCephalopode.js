@@ -13,5 +13,6 @@ router.get("/", controller.getCephalopodes);
 router.post("/", controller.addCephalopode);
 router.get("/:id",controller.getCephalopodeById);
 router.delete("/:id",controller.removeCephalopode);
+router.put("/:id",controller.updateCephalopode);
 
 module.exports=router;
