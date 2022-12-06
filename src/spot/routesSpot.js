@@ -13,5 +13,6 @@ router.get("/", controller.getSpots);
 router.post("/", controller.addSpot);
 router.get("/:id",controller.getSpotById);
 router.delete("/:id",controller.removeSpot);
+router.put("/:id",controller.updateSpot);
 
 module.exports=router;

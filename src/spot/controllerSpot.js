@@ -41,9 +41,28 @@ const removeSpot=(req,res)=>{
  });
 };
 
+const updateSpot=(req,res)=>{
+    const id = parseInt(req.params.id);
+    const {nom}=req.body;
+
+    pool.query(queries.getSpotById,[id],(error,results)=>{
+        const noSpotFound= !results.rows.length;
+        if(noSpotFound){
+        res.send("Le spot n'existe pas en bdd");
+        }
+        pool.query(queries.updateSpot,[nom,id],(error,results)=>{
+            if (error) throw error;
+            res.status(200).send("Spot mis à jour avec succès");
+        }
+        )
+    })
+}
+
+
 module.exports={
     getSpots,
     getSpotById,
     addSpot,
-    removeSpot
+    removeSpot,
+    updateSpot
 };
