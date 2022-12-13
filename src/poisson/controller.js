@@ -1,13 +1,35 @@
 const req = require('express/lib/request');
 const pool = require('../../db');
 const queries=require('./queries');
+const queriesSpot=require('../spot/queriesSpot');
+
+const idSpot=(req,res)=>{
+    const id=parseInt(req.params.id);
+    let idspot=pool.query([id],(error,results)=>{
+        if (error) throw error;
+    res.status(200).json(results.rows);
+    })
+    return idspot
+}
 
 const getPoissons =(req,res)=>{
-    pool.query(queries.getPoissons, (error,results)=>{
+    //test
+    /*const idSpot= parseInt(req.params.id);
+    console.log(`spot id : ${idSpot}`)
+    const {poissons}=req.body;
+    pool.query(queriesSpot.getSpotById,[idSpot],(error,results)=>{
+        if (error) throw error;
+    res.status(200).json(results.rows);
+    
+    console.log(`spot id : ${id}`)
+        */
+    pool.query(queries.getPoissons/*,[idSpot,poissons]*/,(error,results)=>{
     if (error) throw error;
     res.status(200).json(results.rows);
 
-    })
+    }
+    )
+//})
 };
 const getPoissonById=(req,res)=>{
     const id= parseInt(req.params.id);
@@ -66,5 +88,6 @@ module.exports={
     getPoissonById,
     addPoisson,
     removePoisson,
-    updatePoisson
+    updatePoisson,
+    idSpot,
 };
